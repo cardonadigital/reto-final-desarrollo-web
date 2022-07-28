@@ -26,25 +26,25 @@ public class ColumnController {
 
     @GetMapping(path = "/api/v1/columns")
     public ResponseEntity<MyResponseUtility> index() {
-        response.data = null;
+        response.data = columnService.getAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping(path = "/api/v1/column/dto/{id}")
     public ResponseEntity<MyResponseUtility> getAllByBoardId(@PathVariable(value = "id") Integer id) {
-        response.data = null;
+        response.data = columnService.getDto(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping(path = "/api/v1/column/{id}")
     public ResponseEntity<MyResponseUtility> getColumn(@PathVariable(value = "id") Integer id) {
-        response.data = null;
+        response.data = columnService.findById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping(path = "/api/v1/column/{id}")
     public ResponseEntity<MyResponseUtility> createColumnByBoard(@PathVariable("id") Integer id,@RequestBody ColumnDomain column) {
-        response.data = null;
+        response.data = columnService.create(id, column);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
