@@ -3,43 +3,46 @@ package org.sofka.mykrello.model.service;
 import java.util.List;
 
 import org.sofka.mykrello.model.domain.TaskDomain;
+import org.sofka.mykrello.model.repository.TaskRepository;
 import org.sofka.mykrello.model.service.interfaces.TaskServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TaskService implements TaskServiceInterface {
+    @Autowired
+    private TaskRepository taskRepository;
 
     @Autowired
     private LogService logService;
 
     @Override
-    public List<TaskDomain> findAllTasksById(Integer idBoard) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<TaskDomain> findAll() {
+        return taskRepository.findAll();
     }
 
     @Override
     public TaskDomain findById(Integer id) {
-        // TODO Auto-generated method stub
-        return null;
+        return taskRepository.findById(id).get();
     }
 
     @Override
     public TaskDomain create(TaskDomain task) {
-        // TODO Auto-generated method stub
-        return null;
+        return taskRepository.save(task);
     }
 
     @Override
     public TaskDomain update(Integer id, TaskDomain task) {
-        // TODO Auto-generated method stub
-        return null;
+        task.setId(id);
+        return taskRepository.save(task);
     }
 
     @Override
     public TaskDomain delete(Integer id) {
-        // TODO Auto-generated method stub
-        return null;
+        var task = taskRepository.findById(id).get();
+        taskRepository.deleteById(id);
+        return task;
     }
+
+
 }
