@@ -17,5 +17,12 @@ public class TaskDTO {
 
     private String name;
 
+    public TaskDTO(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
+    public TaskDTO() {
+
+    }
 }

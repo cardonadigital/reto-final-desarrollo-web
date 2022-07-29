@@ -17,9 +17,10 @@ public class ColumnDTO {
     @Transient
     private List<TaskDTO> tasks;
 
-    public ColumnDTO(Integer id, String name) {
+    public ColumnDTO(Integer id, String name, List<TaskDTO> tasks) {
         this.id = id;
         this.name = name;
+        this.tasks = tasks;
     }
 
     public ColumnDTO() {

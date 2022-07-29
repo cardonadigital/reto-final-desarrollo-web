@@ -31,7 +31,7 @@ public class ColumnController {
     }
 
     @GetMapping(path = "/api/v1/column/dto/{id}")
-    public ResponseEntity<MyResponseUtility> getAllByBoardId(@PathVariable(value = "id") Integer id) {
+    public ResponseEntity<MyResponseUtility> getAllBoardById(@PathVariable(value = "id") Integer id) {
         response.data = columnService.getDto(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
