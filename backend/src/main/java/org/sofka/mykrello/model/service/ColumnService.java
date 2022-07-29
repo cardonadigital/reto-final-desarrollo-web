@@ -72,7 +72,7 @@ public class ColumnService implements ColumnServiceInterface {
 
             /*List<TaskDTO> tasks = new ArrayList<>();
             tasks.add(new TaskDTO(1, "sacar perro"));*/
-            var boardId = 1;
+            var boardId = id;
             var columnId = column.getId();
             var tasks = getTaskDto(boardId, columnId);
 
@@ -83,7 +83,7 @@ public class ColumnService implements ColumnServiceInterface {
     }
 
     private List<TaskDTO> getTaskDto(Integer idBoard, Integer columnId){
-        var tasks = taskRepository.getTasksByColumn(1, columnId);
+        var tasks = taskRepository.getTasksByColumn(idBoard, columnId);
         List<TaskDTO> tasksByColumn = new ArrayList<>();
         tasks.forEach(task -> {
             tasksByColumn.add(new TaskDTO(task.getId(), task.getName()));
