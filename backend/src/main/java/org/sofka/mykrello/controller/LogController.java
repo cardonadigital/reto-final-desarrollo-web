@@ -1,7 +1,6 @@
 package org.sofka.mykrello.controller;
 
 import org.sofka.mykrello.model.domain.LogDomain;
-import org.sofka.mykrello.model.domain.TaskDomain;
 import org.sofka.mykrello.model.service.LogService;
 import org.sofka.mykrello.utilities.MyResponseUtility;
 import org.springframework.beans.factory.annotation.Autowired;
