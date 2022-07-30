@@ -19,4 +19,18 @@ public class MyResponseUtility {
         message = "Success";
         data = null;
     }
+
+    public void error(String err){
+        restart();
+        error = true;
+        message = err;
+        data = null;
+    }
+
+    public void response(Object object){
+        restart();
+        error = false;
+        message = "Success";
+        data = object;
+    }
 }

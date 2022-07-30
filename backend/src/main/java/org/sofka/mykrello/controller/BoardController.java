@@ -27,33 +27,58 @@ public class BoardController {
 
     @GetMapping(path = "/api/v1/boards")
     public ResponseEntity<MyResponseUtility> index() {
-        response.data = boardService.getAll();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        try {
+            response.response(boardService.getAll());
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            response.error(String.valueOf(e));
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping(path = "/api/v1/board/{id}")
     public ResponseEntity<MyResponseUtility> getBoardById(@PathVariable(value = "id") Integer id) {
-        response.data = boardService.findById(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        try {
+            response.response(boardService.findById(id));
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            response.error(String.valueOf(e));
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping(path = "/api/v1/board")
     public ResponseEntity<MyResponseUtility> create(@RequestBody BoardDomain board) {
-        response.data = boardService.create(board);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        try {
+            response.response(boardService.create(board));
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (Exception e) {
+            response.error(String.valueOf(e));
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping(path = "/api/v1/board/{id}")
     public ResponseEntity<MyResponseUtility> put(@PathVariable(value = "id") Integer id,
-            @RequestBody BoardDomain board) {
-        response.data = boardService.update(id, board);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+                                                 @RequestBody BoardDomain board) {
+        try {
+            response.response(boardService.update(id, board));
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (Exception e) {
+            response.error(String.valueOf(e));
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping(path = "/api/v1/board/{id}")
     public ResponseEntity<MyResponseUtility> delete(@PathVariable(value = "id") Integer id) {
-        response.data = boardService.delete(id);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        try {
+            response.response(boardService.delete(id));
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (Exception e) {
+            response.error(String.valueOf(e));
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

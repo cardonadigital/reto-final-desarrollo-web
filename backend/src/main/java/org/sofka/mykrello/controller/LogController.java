@@ -24,13 +24,23 @@ public class LogController {
 
     @GetMapping(path = "/api/v1/log/{id}")
     public ResponseEntity<MyResponseUtility> getLogById(@PathVariable("id") Integer id) {
-        response.data = logService.findById(id);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        try {
+            response.data = logService.findById(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            response.error(String.valueOf(e));
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping(path = "/api/v1/log")
-    public ResponseEntity<MyResponseUtility> create(@RequestBody LogDomain logDomain) {
-        response.data = logService.create(logDomain);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    public ResponseEntity<MyResponseUtility> create(@RequestBody LogDomain log) {
+        try {
+            response.data = logService.create(log);
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (Exception e) {
+            response.error(String.valueOf(e));
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 }

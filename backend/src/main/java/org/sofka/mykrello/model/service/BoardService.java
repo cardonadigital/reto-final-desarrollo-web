@@ -56,6 +56,10 @@ public class BoardService implements BoardServiceInterface {
     @Override
     @Transactional
     public BoardDomain update(Integer id, BoardDomain board) {
+        var boardRequest = boardRepository.findById(id).orElse(null);
+        if (boardRequest == null){
+            throw new RuntimeException("no se ha encontrado id en database");
+        }
         board.setId(id);
         return boardRepository.save(board);
     }
