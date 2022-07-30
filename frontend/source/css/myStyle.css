@@ -1,7 +1,174 @@
-.container {
-  width: 1300px;
-  border: 1px solid #c3c3c3;
-  border-radius: 4px;
-  margin-top: 16px;
-  padding: 8px;
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,600&family=Inconsolata&family=Lato&family=Open+Sans&family=Patua+One&family=Roboto+Condensed:ital@1&family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,500&family=Source+Serif+Pro&display=swap');
+
+.body{
+   background-color: #e2e2e2;
 }
+
+.body2{
+    background-image: url("https://res.cloudinary.com/paolavbm/image/upload/v1658981196/e6d79eca5ba06f61b5f7e575e85fb680_dwgs3m.png");
+    background-size: 100% 100%;
+}
+
+.proyects{
+    display:  flex;
+    flex-wrap: wrap;
+    width: 100%;   
+}
+
+.proyect{
+    color: white;
+    height: 10em;
+    padding: 1em;
+    border-radius: 10px;
+    width: 20em;
+    margin: 0.5em;
+    background-image: url("https://res.cloudinary.com/paolavbm/image/upload/v1659108590/1Mesa_de_trabajo_1_copia_8_ihy0h3.png");
+    background-position: center; 
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+}
+
+.backlog{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin: 2em 5em;
+}
+
+.column{
+    
+    height: 80vh;
+    padding: 1em 1em 0 1em;
+    background-color: #ebecf0;
+    border-radius: 5px;
+    border: none;
+    overflow-y: scroll;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+
+.titulo{
+    text-align: center;
+   color: #65608d;
+   margin-top: 0.6em;
+}
+
+.menu{
+    border: none;
+    background-color: inherit;
+    margin-top: 4.5em ;
+    margin-left: 16.5em;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+.tablas-titulo{
+    display: inline-block;
+}
+
+.boton{
+   display: inline-block;
+   float: right;
+   border: none;
+   background-color: inherit;
+}
+
+.container-tarea{
+    margin-top: 0.5em;
+    background-color: white;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    padding-bottom: 0.3em;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    margin-bottom: 0.5em;
+}
+
+.tarea{
+    height: 3.5em;
+    padding: 1em;
+    word-wrap: break-word;
+    overflow: hidden;
+    padding: 6px 8px 2px ;
+    position: relative;
+    z-index: 10;
+   
+}
+
+.nombre-tarea{
+    word-wrap: break-word;
+    clear: both;
+    color: #172b4d;
+    display: block;
+    margin: 0 0 4px;
+    overflow: hidden;
+    text-decoration: none
+}
+
+.fecha{
+    background-color: #da416c;
+    color: white;
+    font-size: 13px;
+    width: 7em;
+    margin: 0 0 0.5em 0.5em;
+    padding-left: 0.5em;
+    border-radius: 5px;
+    
+    
+}
+
+.reloj{
+    margin-bottom: 0.3em;
+}
+
+.agregar{
+   background-color:  #e2e2e2;
+   height: 2.5em;
+   cursor: pointer;
+}
+
+.mas{
+    margin: 0.3em 0.3em;
+    display: inline-block;
+    color: gray;
+}
+
+
+.modal-table{
+    display: inline-block;
+}
+
+.vencimiento{
+    margin-top: 1em;
+}
+
+.desc{
+    display: inline-block;
+}
+
+
+
+.btn-bd-primary {
+   background-color: rgb(151, 2, 151);
+   color: white;
+  }
+
+  .btn-bd-primary:hover{
+    background-color: #70155a;
+    color: white;
+  }
+
+  .activitie{
+    margin-top: 0.5em;
+    background-color: rgb(237, 235, 231);
+    width: 38em;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0.5em;
+    box-shadow: rgba(240, 46, 237, 0.4) 5px 5px, rgba(240, 46, 211, 0.3) 10px 10px, rgba(240, 46, 137, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    margin-bottom: 1em;
+    color:  gray;
+  }

@@ -1,30 +1,36 @@
 'use strict';
 
-import { Navbar } from "./components/navbar.component.mjs";
-import { Table } from "./components/table.component.mjs";
+import { ProyectView } from "./components/proyect.component.mjs";
+
 
 export class IndexView {
-    #privateContainer;
-    #privateNavbar;
-    #privateTable;
-    #privateData;
+    #privateBody;
+    #privateProyect;
+    #boardController;
+    #structure;
 
-    constructor(header) {
-        this.#privateContainer = document.querySelector('.container');
-        this.#privateNavbar = new Navbar();
-        this.#privateTable = new Table(header);
+    constructor(boardController) {
+        this.#privateBody = document.querySelector('body');
+        this.#boardController = boardController;
+        this.#privateProyect = document.querySelector(".krello-container");
     }
+   
 
-    set Data(data) {
-        this.#privateData = data;
-    }
+     init(boards) {  
+        const titulo = document.createElement('h2')
+        titulo.textContent = "Tus espacios de trabajo"
+        titulo.classList.add('titulo')
+        const contenedor = document.createElement('div')
+        contenedor.classList.add('proyects')
+        this.#structure = contenedor
+        this.#privateProyect.append(titulo, this.#structure)
+        boards.forEach((boards) => {
+          new ProyectView(boards, this.#structure, this.#boardController);
 
-    init() {
-        this.#privateTable.Data = this.#privateData;
-        this.#privateContainer.append(
-            this.#privateNavbar.get(),
-            this.#privateTable.get()
-        );
-    }
+        });
 
-}
+
+
+      
+
+}}

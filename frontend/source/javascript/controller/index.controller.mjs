@@ -1,26 +1,49 @@
 "use strict";
 
-// Services
-import { MyUsersService } from "../model/services/my-users.service.mjs";
+import { Config } from "../config.mjs";
+import { BoardService} from "../model/services/boards.service.mjs";
+import { Pruebas } from "../model/services/Pruebas.services.mjs";
 
-// Views
+import { ProyectView } from "../view/components/proyect.component.mjs";
+
 import { IndexView } from "../view/index.view.mjs";
 
 class IndexController {
     #privateView;
-    #privateMyUsersService;
-
+    #boardService;   
+    #prueba
     constructor() {
-        const headerData = ['nombre', 'apellidos', 'correo', 'teléfono', 'creado', 'acciones'];
-        this.#privateView = new IndexView(headerData);
-        this.#privateMyUsersService = new MyUsersService();
+        this.#privateView = new IndexView();
+        this.#boardService = new BoardService();
+        this.#prueba = new Pruebas()
     }
 
     async init() {
-        this.#privateView.Data = await this.#privateMyUsersService.getUsers();
-        this.#privateView.init();
+        const boards = await this.#boardService.getBoards();  
+        this.#privateView.init(boards);
+        this.#prueba.prueba();
     }
+
+    async delete(id) {
+        return this.#boardService.deleteBoards(id);           
+      }
+
+      async create(objeto) {
+       
+          return this.#boardService.createBoards(objeto);    
+      }
+
+      async update(objeto, id){
+          return this.#boardService.updateBoards(objeto, id);
+      }
+
+
+    
 }
+
 
 export const index = new IndexController();
 index.init();
+
+
+
