@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+
+/**
+ * Controller endpoints of the board
+ *
+ * @author Daniel David Cardona - Paola Valentina
+ * @version 1.0.0     30/07/2022
+ * @since 1.0.0
+ */
+
 @RestController
 @CrossOrigin(value = "*")
 public class BoardController {
@@ -24,6 +33,16 @@ public class BoardController {
 
     @Autowired
     private BoardService boardService;
+
+
+    /**
+     * Get all the boards(Object)
+     *
+     * @return list of object(BoardDomain)
+     * @author Daniel David Cardona - Paola Valentina
+     * @version 1.0.0     30/07/2022
+     * @since 1.0.0
+     */
 
     @GetMapping(path = "/api/v1/boards")
     public ResponseEntity<MyResponseUtility> index() {
@@ -36,6 +55,16 @@ public class BoardController {
         }
     }
 
+    /**
+     * Get board by it`s respective Id
+     *
+     * @param id Id of the board
+     * @return object(BoardDomain)
+     * @author Daniel David Cardona - Paola Valentina
+     * @version 1.0.0     30/07/2022
+     * @since 1.0.0
+     */
+
     @GetMapping(path = "/api/v1/board/{id}")
     public ResponseEntity<MyResponseUtility> getBoardById(@PathVariable(value = "id") Integer id) {
         try {
@@ -46,6 +75,16 @@ public class BoardController {
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
+
+    /**
+     * create board
+     *
+     * @param board object(BoardDomain)
+     * @return the created object
+     * @author Daniel David Cardona - Paola Valentina
+     * @version 1.0.0     30/07/2022
+     * @since 1.0.0
+     */
 
     @PostMapping(path = "/api/v1/board")
     public ResponseEntity<MyResponseUtility> create(@RequestBody BoardDomain board) {
@@ -58,6 +97,17 @@ public class BoardController {
         }
     }
 
+    /**
+     * Update the specific board
+     *
+     * @param id    Id of the board
+     * @param board object(BoardDomain)
+     * @return the updated board
+     * @author Daniel David Cardona - Paola Valentina
+     * @version 1.0.0     30/07/2022
+     * @since 1.0.0
+     */
+
     @PutMapping(path = "/api/v1/board/{id}")
     public ResponseEntity<MyResponseUtility> put(@PathVariable(value = "id") Integer id,
                                                  @RequestBody BoardDomain board) {
@@ -69,6 +119,16 @@ public class BoardController {
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
+
+    /**
+     * delete the specific board
+     *
+     * @param id Id of the board
+     * @return the deleted board
+     * @author Daniel David Cardona - Paola Valentina
+     * @version 1.0.0     30/07/2022
+     * @since 1.0.0
+     */
 
     @DeleteMapping(path = "/api/v1/board/{id}")
     public ResponseEntity<MyResponseUtility> delete(@PathVariable(value = "id") Integer id) {

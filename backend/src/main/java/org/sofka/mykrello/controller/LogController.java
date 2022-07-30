@@ -13,6 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller endpoints of the log
+ *
+ * @author Daniel David Cardona - Paola Valentina
+ * @version 1.0.0     30/07/2022
+ * @since 1.0.0
+ */
+
 @RestController
 @CrossOrigin("*")
 public class LogController {
@@ -21,6 +29,17 @@ public class LogController {
 
     @Autowired
     private MyResponseUtility response;
+
+
+    /**
+     * Get the specific log
+     *
+     * @param id Log Id
+     * @return the specific log object(LogDomain)
+     * @author Daniel David Cardona - Paola Valentina
+     * @version 1.0.0     30/07/2022
+     * @since 1.0.0
+     */
 
     @GetMapping(path = "/api/v1/log/{id}")
     public ResponseEntity<MyResponseUtility> getLogById(@PathVariable("id") Integer id) {
@@ -33,6 +52,15 @@ public class LogController {
         }
     }
 
+    /**
+     * Create a new log
+     *
+     * @param log log object(LogDomain)
+     * @return the created log
+     * @author Daniel David Cardona - Paola Valentina
+     * @version 1.0.0     30/07/2022
+     * @since 1.0.0
+     */
     @PostMapping(path = "/api/v1/log")
     public ResponseEntity<MyResponseUtility> create(@RequestBody LogDomain log) {
         try {

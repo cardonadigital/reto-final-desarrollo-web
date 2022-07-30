@@ -19,6 +19,14 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
+/**
+ * Log Object which is mapped into database
+ *
+ * @author Daniel David Cardona - Paola Valentina
+ * @version 1.0.0     30/07/2022
+ * @since 1.0.0
+ */
+
 @Data
 @Entity
 @Table(name = "krl_log")
