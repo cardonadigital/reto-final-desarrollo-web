@@ -1,6 +1,6 @@
 export class Pruebas{
 
-
+ 
     constructor() {
        
     }
@@ -19,7 +19,7 @@ export class Pruebas{
           on(document, "click", ".proyect", (e) => {
             const proyect = e.target.getAttribute('value');
 
-            window.location.replace("")
+            window.location.href("http://127.0.0.1:5500/frontend/source/columns.html")
     })
    
 }};

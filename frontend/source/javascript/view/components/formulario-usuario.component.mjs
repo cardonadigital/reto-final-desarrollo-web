@@ -78,10 +78,5 @@ export class FormularioUsurio {
 
         div.append(btnCancelar, btnSubmit);
         return div;
-
-        // return `<div>
-        //     <button type="button" class="btn btn-primary">Cancelar</button>
-        //     <button type="submit" class="btn btn-primary">Modificar</button>
-        // </div>`;
     }
 }

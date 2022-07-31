@@ -20,15 +20,16 @@ export class ColumnsView {
     }
 
 
-    init() {
+    init(columns) {
         const backlog = document.createElement('div')
         backlog.classList.add('backlog')
-        const toDo = new Column("To-do", backlog);
-        const inProgress = new Column("In Progress", backlog)
-        const done = new Column("Done", backlog)
- 
+
+        columns.forEach(element => {
+            new Column(element, backlog)
+        });
+
        
-        // this.#privateBody.append(backlog);
+        this.#privateBody.append(backlog);
 
     }
    

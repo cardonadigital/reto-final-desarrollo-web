@@ -20,7 +20,7 @@ export class ProyectView {
   #createComponent() {
     const contBoard = `
      
-        <div class="proyect" value=${this.#board.id}>
+        <div class="proyect" onclick='window.location.href="http://127.0.0.1:5500/frontend/source/columns.html?id=${this.#board.id}"'>
             <h5>${this.#board.name}</h5>
              <button type="button" class="menu dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://res.cloudinary.com/paolavbm/image/upload/v1659022047/mas_2_qp3qtn.png" alt="MDN">
@@ -41,7 +41,7 @@ export class ProyectView {
   
     return template.content;
   }
-  
+
  
   #contenido() {
     this.#parentNode.append(this.#component);
