@@ -11,8 +11,14 @@ export class BoardService {
             boards.push(new boardModel(id, name, createdAt, updatedAt, columnsForBoard))
         );
         return boards;
-
     }
+
+    async getBoard(id){
+        return fetch(Config.ApiBoards + id)
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+
   async deleteBoards(id) {
         await fetch(Config.ApiBoards + id, {
             method: 'DELETE'

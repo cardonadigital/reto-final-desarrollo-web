@@ -24,4 +24,21 @@ export class IndexView {
       new ProyectView(boards, this.#structure, this.#boardController);
     });
   }
+
+ 
+
+  edit(data){
+    let name = data.data.name;
+    console.log(data.data.name);
+    let formTitle = document.querySelector('.modal-title');
+    formTitle.textContent = name;
+
+    let formBoard = document.querySelector('.formBoard');
+    formBoard.setAttribute('id', data.data.id);
+    formBoard.addEventListener("click", function(e){
+      alert(e.target.id)
+      console.log(e.target);
+    })
+    
+  }
 }

@@ -1,8 +1,11 @@
-export class Pruebas{
+import { IndexView } from "../../view/index.view.mjs";
+import { boardModel } from "../boards.model.mjs";
 
+export class Pruebas{
+    #privateView;
  
     constructor() {
-       
+      this.#privateView = new IndexView();
     }
 
     prueba(){
@@ -43,15 +46,18 @@ export class Pruebas{
     /**
      * update board (FALTA CONSEGUIR DATOS DE UN CUESTIONARIO)
      */
-    const updateElements = document.querySelectorAll('#update');
+
+
+    const updateElements = document.querySelectorAll('.formBoard');
     updateElements.forEach(element=>{
       element.addEventListener("click", (e)=>{
-        let boardId = e.target.getAttribute('value');
-        let json = {name: 'prueba up', createdAt: null, updatedAt: null}
-        console.log(boardId);
-        fetch(`http://localhost:8080/api/v1/board/${boardId}`, {
+        let boardName = document.getElementById('updateBoard').value;
+        let boardId = e.target.getAttribute('id');
+        let json = `{"id": null, "name": "${boardName}", "createdAt": null, "updatedAt": null}`
+        console.log(json);
+        fetch(`http://localhost:8080/api/v1/board/15`, {
           method: 'PUT',
-          body: JSON.stringify(json),
+          body: json,
           headers:{
             'Content-Type': 'application/json'
           }
@@ -61,6 +67,22 @@ export class Pruebas{
         .catch((error) => console.log(`algo sucedio: ${error}`));
       })
     })
-    
-   
-}};
+}
+
+
+  sendBoard(){
+    const update = document.querySelectorAll('#update');
+    update.forEach(element=>{
+      element.addEventListener("click", (e)=>{
+        let boardId = e.target.getAttribute('value');
+        fetch(`http://localhost:8080/api/v1/board/${boardId}`)
+        .then((response) => response.json())
+        .then((data)=> this.#privateView.edit(data))
+        .catch((error) => console.log(`algo sucedio: ${error}`));
+      })
+    })
+  }
+
+
+
+};

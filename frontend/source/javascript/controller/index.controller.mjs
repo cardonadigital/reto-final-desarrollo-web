@@ -19,8 +19,19 @@ class IndexController {
     }
 
     async init() {
-        const boards = await this.#boardService.getBoards();  
+        const boards = await this.#boardService.getBoards(); 
         this.#privateView.init(boards);
+        
+        
+        /* this.#prueba.sendBoard()
+        .then((result) => {
+            console.log(result);
+            this.#privateView.edit();
+        }).catch((err) => {
+            console.log(err);
+        }); */
+        
+        const board = await this.#prueba.sendBoard();
         this.#prueba.prueba();
     }
 
