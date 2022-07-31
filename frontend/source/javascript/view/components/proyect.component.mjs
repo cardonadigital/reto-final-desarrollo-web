@@ -20,17 +20,20 @@ export class ProyectView {
   #createComponent() {
     const contBoard = `
      
-        <div class="proyect" onclick='window.location.href="http://127.0.0.1:5500/frontend/source/columns.html?id=${this.#board.id}"'>
-            <h5>${this.#board.name}</h5>
-             <button type="button" class="menu dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://res.cloudinary.com/paolavbm/image/upload/v1659022047/mas_2_qp3qtn.png" alt="MDN">
-             </button>
-
-             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Eliminar</a></li>
-                <li><a class="dropdown-item" href="#">Editar</a></li>
-              </ul>
-        </div>
+    <div class="proyecto">
+    <div class="text-center proyect h-75"  onclick='window.location.href="http://127.0.0.1:5500/source/columns.html?id=${this.#board.id}"'>
+          <h3>${this.#board.name}</h3>
+      </div>
+      <div class="d-flex h-25">
+          <button type="button" class="menu dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://res.cloudinary.com/paolavbm/image/upload/v1659022047/mas_2_qp3qtn.png" alt="MDN">
+          </button>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#" id="delete" value="${this.#board.id}">Eliminar</a></li>
+              <li><a class="dropdown-item" href="#" id="update" value="${this.#board.id}">Editar</a></li>
+            </ul>
+          </div>
+    </div>
 
         `
 

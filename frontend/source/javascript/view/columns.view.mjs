@@ -15,7 +15,6 @@ export class ColumnsView {
 
     constructor() {
         this.#privateBody = document.querySelector('.body2');
-       
 
     }
 

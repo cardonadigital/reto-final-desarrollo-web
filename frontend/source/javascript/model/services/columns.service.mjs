@@ -7,9 +7,10 @@ export class ColumnsService {
  
         const urlParams = new URLSearchParams(window.location.search);
         let idParam = urlParams.get('id');
-        let url =  `${Config.dto}` + `${idParam}`
+        let url =  `${Config.dto}` + `${idParam}`;
+
         console.log(url);
-        const resp = await fetch(url)
+        const resp = await fetch(url);
         const data = await resp.json();
 
         const columns = new Array();
