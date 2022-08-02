@@ -6,7 +6,7 @@ export class ColumnsService {
     async getColumns() {
  
         const urlParams = new URLSearchParams(window.location.search);
-        let idParam = urlParams.get('id');
+        let idParam = urlParams.get('id')??'1';
         let url =  `${Config.dto}` + `${idParam}`;
 
         console.log(url);

@@ -17,7 +17,7 @@ export class IndexView {
     titulo.textContent = "Tus espacios de trabajo";
     titulo.classList.add("titulo");
     const contenedor = document.createElement("div");
-    contenedor.classList.add("proyects");
+    contenedor.classList.add("proyects", "d-flex",  "justify-content-center");
     this.#structure = contenedor;
     this.#privateProyect.append(titulo, this.#structure);
     boards.forEach((boards) => {
@@ -33,11 +33,14 @@ export class IndexView {
     let formTitle = document.querySelector('.modal-title');
     formTitle.textContent = name;
 
+
+    /* let Logs = ; */
+
     let formBoard = document.querySelector('.formBoard');
     formBoard.setAttribute('id', data.data.id);
     formBoard.addEventListener("click", function(e){
       alert(e.target.id)
-      console.log(e.target);
+      console.log(data);
     })
     
   }

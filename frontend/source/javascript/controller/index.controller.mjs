@@ -3,6 +3,8 @@
 import { Config } from "../config.mjs";
 import { BoardService} from "../model/services/boards.service.mjs";
 import { Pruebas } from "../model/services/Pruebas.services.mjs";
+import { TaskService } from "../model/services/taks.service.mjs";
+
 
 import { ProyectView } from "../view/components/proyect.component.mjs";
 
@@ -12,10 +14,11 @@ class IndexController {
     #privateView;
     #boardService;   
     #prueba
+    
     constructor() {
         this.#privateView = new IndexView();
         this.#boardService = new BoardService();
-        this.#prueba = new Pruebas()
+        this.#prueba = new Pruebas();
     }
 
     async init() {
@@ -46,10 +49,7 @@ class IndexController {
 
       async update(objeto, id){
           return this.#boardService.updateBoards(objeto, id);
-      }
-
-
-    
+      }  
 }
 
 

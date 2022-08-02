@@ -10,26 +10,58 @@ export class Column {
         this.getTasks();
         this.#component = this.createComponent();
         this.addContent();
-        console.log(this.#tasks);
+        
         
     }
 
     getTasks() {
       this.#column.tasks.forEach(element => {
         this.#tasks +=`
-        <div class="container-tarea" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <div class="container-tarea" id ="${element.id}">
         <div class="tarea">
           <p class="nombre-tarea">${element.name}</p>
         </div>
   
-        <div>
+        <div class="d-flex justify-content-between">
           <div class="fecha">
             <img class="reloj" src="https://res.cloudinary.com/paolavbm/image/upload/v1659069920/reloj_2_zcu6nl.png"
               width="16px" height="16px">
             18 de jul.
           </div>
+
+
+
+          
+
+
+
+          <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            >
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id=${element.id} value="${element.name}">
+            <a class="dropdown-item changeColumn" href="#" id ="1">Columna1</a>
+            <a class="dropdown-item changeColumn" href="#" id ="2">Columna2</a>
+            <a class="dropdown-item changeColumn" href="#" id ="3">Columna3</a>
+          </ul>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm formTask" id="${element.id}" data-bs-toggle="modal" data-bs-target="#form">
+            U
+          </button>
+
+
+          <button type="button" class="btn btn-danger btn-sm deleteTask" value=${element.id}>x</button>
+
+
         </div>
       </div>
+
+
+
+
+    
         `
       });
     }
@@ -37,7 +69,7 @@ export class Column {
 
     createComponent() {
         const columns = `
-    <div class="column">
+    <div class="column" id="${this.#column.id}">
     <div class="flex">
       <h6 class="tablas-titulo">${this.#column.name}</h6>
       <button type="button" class="dropdown-toggle boton" role="button" data-bs-toggle="dropdown"
@@ -54,13 +86,115 @@ export class Column {
 
         ${this.#tasks}
         
-    <div class="sticky-bottom agregar">
+    <div class="sticky-bottom agregar" id="columnId${this.#column.id}" style="z-index:1" data-bs-toggle="modal" data-bs-target="#createTask">
       <img class="mas" src="https://res.cloudinary.com/paolavbm/image/upload/v1659094757/mas_5_djwimz.png" alt="mdn"
         width="18em">
       <p class="mas">Añadir tarjeta</p>
     </div>
 
   </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tarea</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+              <div class="card">
+                  <form>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control taskName" value="">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">descripción</label>
+                        <input type="text" class="form-control taskDescription" value="">
+                      </div>
+                      <div class="form-check">
+                          <label class="form-check-label" for="exampleCheck1">Fecha de entrega</label>
+                          <input type="date" class="mt-2 dateTask" value="2022-09-01">
+                      </div>
+                      <div class="mt-2 mb-2">
+                      <button type="submit" class="btn btn-primary submitUpdateTask">Update</button>
+                      </div>
+                    </form>
+              </div>
+
+              <h2 class="mt-5">Informacion Tarea: </h2>
+
+              <div class="text-center card">
+                <h3 class="showTaskName">name: </h3>
+                <p class="showTaskDescription">description: </p>
+                <p class="showTaskCreate">created: </p>
+
+                <h4>historial logs: </h4>
+                <div class="showLogs">
+                <p class="">previous</p>
+                <p class="">current</p>
+
+                </div>
+
+              </div>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- Modal -->
+  <div class="modal fade" id="createTask" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+              <div class="card">
+                  <form>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control taskNameCreate" value="">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">descripción</label>
+                        <input type="text" class="form-control taskDescriptionCreate" value="">
+                      </div>
+                      <div class="form-check">
+                          <label class="form-check-label" for="exampleCheck1">Fecha de entrega</label>
+                          <input type="date" class="mt-2 dateTaskCreate" value="2022-09-01">
+                      </div>
+                      <div class="mt-5">
+                      <button type="submit" class="btn btn-primary addTask">Submit</button>
+                      </div>
+                    </form>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
   `
       console.log(this.#column.tasks);

@@ -52,10 +52,11 @@ export class Pruebas{
     updateElements.forEach(element=>{
       element.addEventListener("click", (e)=>{
         let boardName = document.getElementById('updateBoard').value;
-        let boardId = e.target.getAttribute('id');
-        let json = `{"id": null, "name": "${boardName}", "createdAt": null, "updatedAt": null}`
+        let id = e.target.getAttribute('id');
+        console.log(id);
+        let json = `{"name": "${boardName}", "createdAt": null, "updatedAt": null}`
         console.log(json);
-        fetch(`http://localhost:8080/api/v1/board/15`, {
+        fetch(`http://localhost:8080/api/v1/board/${id}`, {
           method: 'PUT',
           body: json,
           headers:{
