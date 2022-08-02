@@ -1,22 +1,22 @@
 export class Column {
-    #column;
-    #parentNode;
-    #component;
-    #tasks = '';
+  #column;
+  #parentNode;
+  #component;
+  #tasks = '';
 
-    constructor(column, parenNode) {
-        this.#column = column
-        this.#parentNode = parenNode;
-        this.getTasks();
-        this.#component = this.createComponent();
-        this.addContent();
-        
-        
-    }
+  constructor(column, parenNode) {
+    this.#column = column
+    this.#parentNode = parenNode;
+    this.getTasks();
+    this.#component = this.createComponent();
+    this.addContent();
 
-    getTasks() {
-      this.#column.tasks.forEach(element => {
-        this.#tasks +=`
+
+  }
+
+  getTasks() {
+    this.#column.tasks.forEach(element => {
+      this.#tasks += `
         <div class="container-tarea" id ="${element.id}">
         <div class="tarea">
           <p class="nombre-tarea">${element.name}</p>
@@ -31,44 +31,38 @@ export class Column {
 
 
 
-          
-
-
-
+<div class="containerBotones">
           <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            >
+          <button class="btn dropdown-toggle btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> 
+          <img src="https://res.cloudinary.com/paolavbm/image/upload/v1659413145/avance-rapido_crcylb.png" width="10px">
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id=${element.id} value="${element.name}">
-            <a class="dropdown-item changeColumn" href="#" id ="1">Columna1</a>
-            <a class="dropdown-item changeColumn" href="#" id ="2">Columna2</a>
-            <a class="dropdown-item changeColumn" href="#" id ="3">Columna3</a>
+            <a class="dropdown-item changeColumn" href="#" id ="1">Por realizar</a>
+            <a class="dropdown-item changeColumn" href="#" id ="2">En proceso/a>
+            <a class="dropdown-item changeColumn" href="#" id ="3">Terminado</a>
           </ul>
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-sm formTask" id="${element.id}" data-bs-toggle="modal" data-bs-target="#form">
-            U
+        <button type="button" class="btn btn-sm formTask" id="${element.id}" data-bs-toggle="modal" data-bs-target="#form">
+        <img src="https://res.cloudinary.com/paolavbm/image/upload/v1659413145/lupa_4_z0klfy.png" width="10px">
           </button>
 
 
-          <button type="button" class="btn btn-danger btn-sm deleteTask" value=${element.id}>x</button>
-
-
+          <button type="button" class="btn  btn-sm deleteTask" value=${element.id}>
+          <img src="https://res.cloudinary.com/paolavbm/image/upload/v1659413146/cerrar_y4qk72.png" width="10px">
+          </button>
+</div>
         </div>
       </div>
-
-
-
-
-    
+  
         `
-      });
-    }
+    });
+  }
 
 
-    createComponent() {
-        const columns = `
+  createComponent() {
+    const columns = `
     <div class="column" id="${this.#column.id}">
     <div class="flex">
       <h6 class="tablas-titulo">${this.#column.name}</h6>
@@ -99,7 +93,7 @@ export class Column {
 
   <!-- Modal -->
   <div class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Tarea</h5>
@@ -181,7 +175,7 @@ export class Column {
                           <input type="date" class="mt-2 dateTaskCreate" value="2022-09-01">
                       </div>
                       <div class="mt-5">
-                      <button type="submit" class="btn btn-primary addTask">Submit</button>
+                      <button type="submit" id="create" class=" addTask">Submit</button>
                       </div>
                     </form>
               </div>
@@ -197,14 +191,14 @@ export class Column {
 
 
   `
-      console.log(this.#column.tasks);
-        const fragnmet = document.createElement("template");
-        fragnmet.innerHTML = columns;
-        return fragnmet.content;
-    }
+    console.log(this.#column.tasks);
+    const fragnmet = document.createElement("template");
+    fragnmet.innerHTML = columns;
+    return fragnmet.content;
+  }
 
-    addContent() {
-        this.#parentNode.append(this.#component);
-    }
+  addContent() {
+    this.#parentNode.append(this.#component);
+  }
 
 }

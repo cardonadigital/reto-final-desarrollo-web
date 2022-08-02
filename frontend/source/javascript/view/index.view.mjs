@@ -19,7 +19,14 @@ export class IndexView {
     const contenedor = document.createElement("div");
     contenedor.classList.add("proyects", "d-flex",  "justify-content-center");
     this.#structure = contenedor;
-    this.#privateProyect.append(titulo, this.#structure);
+    const boton = document.createElement("button");
+    boton.classList.add("button");
+    boton.textContent= 'Agregar'
+    boton.classList.add("button")
+    boton.setAttribute("data-bs-toggle", "modal");
+    boton.setAttribute("data-bs-target", "#staticBackdrop");
+    
+    this.#privateProyect.append(titulo, this.#structure,  boton);
     boards.forEach((boards) => {
       new ProyectView(boards, this.#structure, this.#boardController);
     });

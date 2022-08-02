@@ -176,3 +176,30 @@
     padding-top: 50px;
    z-index: 10;
   }
+
+
+
+  .button{
+    color: white;
+    background-color: #70155a;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5em;
+    position: absolute;
+    right: 1em;
+    top: 2em;
+  }
+
+
+  #create{
+    color: white;
+    background-color: #70155a;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5em;
+  }
+
+
+  .containerBotones{
+    display: flex !important;
+  }

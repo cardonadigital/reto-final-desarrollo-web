@@ -26,6 +26,32 @@ export class Pruebas{
     });
 
 
+    const postBoard = document.querySelectorAll('#create');
+    
+    postBoard.forEach(element=>{
+      element.addEventListener("click", (e)=>{
+        e.preventDefault()
+        let boardName = document.getElementById('nombreBoard').value;
+        console.log(boardName)
+        let json = `{"name": "${boardName}"}`
+
+       console.log(json);
+        fetch(`http://localhost:8080/api/v1/board`, {
+          method: "POST",
+          body: json,
+          headers: {
+              "Content-Type": "application/json; charset=utf-8"
+          }
+        })
+        .then((response) => response.json())
+        .then((json)=> console.log(`elemento creado ${json}`))
+        .then(window.location.reload())
+        .catch((error) => console.log(`algo error: ${error}`));
+      })
+    })
+
+
+
     /**
      * delete board
      */
